@@ -1,7 +1,7 @@
 import Polygon from 'zrender/src/graphic/shape/Polygon';
 import Rect from 'zrender/src/graphic/shape/Rect';
 import Group from 'zrender/src/container/Group';
-import LngLat2Coordinate from '../functions/LngLat2Coordinate';
+import lngLat2Mercator from '../functions/lngLat2Mercator';
 
 /*
  * @param {ZRender} zr
@@ -22,7 +22,7 @@ export default function drawGeo(zr, geojson) {
       let coord = coordinates[i];
 
       for(let j = 0; j < coord.length; j++) {
-         let c = LngLat2Coordinate(coord[j][0], coord[j][1], r);
+         let c = lngLat2Mercator(coord[j][0], coord[j][1], r);
          coords.push([400 - c.x, 600 - c.y]);
       }
    }

@@ -1,10 +1,14 @@
 /**
  * Created by ZhaokangYuan on 2016/1/15.
  */
-function lngLat2Coordinate(lng, lat, radius) {
-    let x = radius * Math.cos(lng / 180 * Math.PI);
-    let y = radius * Math.tan(lat / 180 * Math.PI);
-    return {x, y};
-}
 
-export default lngLat2Coordinate;
+var LngLat2Coordinate= function (lng,lat,radius) {
+   var lngLat={lng:lng,lat:lat};
+   var l = radius * Math.cos(lngLat.lat / 180 * Math.PI);
+
+   var x = l * Math.sin(lngLat.lng / 180 * Math.PI);
+   var y = radius * Math.sin(lngLat.lat / 180 * Math.PI);
+   var z = l * Math.cos(lngLat.lng / 180 * Math.PI);
+
+   return {x:x,y:y,z:z};
+};
